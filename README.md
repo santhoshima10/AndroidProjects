@@ -1,5 +1,12 @@
 Inventory App - Udacity Android Basics: Data Storage 
 
+
+<img width="349" alt="inventoryapp_editproduct" src="https://user-images.githubusercontent.com/25735215/42250745-fb7fc3de-7ee7-11e8-8cfb-812686580cf4.png">
+
+<img width="355" alt="inventoryapp_addproductscreen" src="https://user-images.githubusercontent.com/25735215/42250784-3d019936-7ee8-11e8-9b29-865d4e42b03e.png">
+
+<img width="349" alt="inventoryapp_editproduct" src="https://user-images.githubusercontent.com/25735215/42250756-0e750422-7ee8-11e8-9034-ee50323a2262.png">
+
 PROJECT SPECIFICATION
 
 Overall Layout
