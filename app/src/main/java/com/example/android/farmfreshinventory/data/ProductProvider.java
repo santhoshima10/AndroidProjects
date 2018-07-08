@@ -63,7 +63,15 @@ public class ProductProvider extends ContentProvider {
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
-        return null;
+
+        switch (uriMatcher.match(uri)){
+            case PRODUCT:
+                return ProductContract.ProductEntry.CONTENT_LIST_TYPE;
+            case PRODUCT_ID:
+                return ProductContract.ProductEntry.CONTENT_ITEM_TYPE;
+             default:
+                 throw new IllegalArgumentException("Unable to process the Uri"+uri);
+        }
     }
 
     @Nullable
