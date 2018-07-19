@@ -28,7 +28,6 @@ import com.example.android.farmfreshinventory.data.ProductContract;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-
     private static final int CURSOR_LOADER_ID = 1;
     String[] projection;
     ProductAdapter productAdapter;
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Intent intent = new Intent(MainActivity.this, EditorActivity.class);
                 intent.setData(Uri.withAppendedPath(ProductContract.ProductEntry.CONTENT_URI, String.valueOf(id)));
                 startActivity(intent);
-
 
             }
         });
@@ -111,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         } else {
 
             Toast.makeText(this, "Error in Products Delete" + ProductContract.ProductEntry.CONTENT_URI.toString(), Toast.LENGTH_SHORT);
-
 
         }
 
