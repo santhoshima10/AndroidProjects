@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         View emptyView = (View)findViewById(R.id.empty_view_id);
         listView.setAdapter(productAdapter);
         if(productAdapter.getCount()==0){
-            emptyView.setVisibility(View.INVISIBLE);
+            listView.setEmptyView(emptyView);
         }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

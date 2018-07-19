@@ -372,43 +372,42 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         boolean flag = true;
 
         if(mProductName.getText().toString().trim().length() ==0){
-            mProductName.setError("Enter Product Name");
+            Toast.makeText(this, "Enter Valid Product Name", Toast.LENGTH_SHORT).show();
             flag= false;
         }
 
-       if(mProductUnitPrice.getText().toString().length() ==0){
-            mProductUnitPrice.setError("Enter Valid Price");
+       else if(mProductUnitPrice.getText().toString().length() ==0){
+           Toast.makeText(this, "Enter Valid Product Price", Toast.LENGTH_SHORT).show();
             flag = false;
         }
 
-       if(mProductQuantity.getText().toString().length() == 0){
-            mProductQuantity.setError("Enter Valid Quantity");
+       else if(mProductQuantity.getText().toString().length() == 0){
+           Toast.makeText(this, "Enter Valid Product Quantity", Toast.LENGTH_SHORT).show();
             flag =false;
         }
 
-        if(mProductSupplierName.getText().toString().trim().length() ==0){
-            mProductSupplierName.setError("Enter Valid Supplier Name");
+        else if(mProductSupplierName.getText().toString().trim().length() ==0){
+            Toast.makeText(this, "Enter Valid Supplier Name", Toast.LENGTH_SHORT).show();
             flag= false;
         }
 
-        if(mProductSupplierPhone.getText().toString().trim().length() ==0){
-            mProductSupplierPhone.setError("Enter Valid Supplier Phone");
+        else if(mProductSupplierPhone.getText().toString().trim().length() ==0){
+            Toast.makeText(this, "Enter Valid Supplier Phone", Toast.LENGTH_SHORT).show();
             flag= false;
         }
 
-        if(mProductSupplierEmail.getText().toString().trim().length() ==0){
-            mProductSupplierEmail.setError("Enter Valid Supplier Email");
+        else if(mProductSupplierEmail.getText().toString().trim().length() ==0){
+            Toast.makeText(this, "Enter Valid Supplier Email", Toast.LENGTH_SHORT).show();
             flag= false;
         }
 
 
-        if(imageURI.isEmpty())
+       else if(imageURI.isEmpty())
         {
-            mProductAddImageBtn.setError("Upload Product Image");
+            Toast.makeText(this, "Upload Product Image", Toast.LENGTH_SHORT).show();
             flag = false;
         }
 
-        System.out.println("The value of the validate function"+flag);
 
         if(flag){
             return true;
@@ -416,9 +415,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         else{
             return false;
         }
-
-
-
 
     }
 
@@ -526,16 +522,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }).setPositiveButton("Email", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-               /* Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/html");
-                intent.putExtra(Intent.EXTRA_EMAIL,mProductSupplierEmail.getText().toString());
-                intent.putExtra(Intent.EXTRA_SUBJECT,"Order of Product"+mProductName.getText().toString());
-                startActivity(Intent.createChooser(intent, "Send Email"));*/
-
 
                 String email = mProductSupplierEmail.getText().toString();
                 String subject = "Order of Product "+mProductName.getText().toString();
-
 
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + email));
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
@@ -580,7 +569,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         while(data.moveToNext()){
 
-
             int _id = data.getInt(data.getColumnIndexOrThrow(ProductContract.ProductEntry._ID));
             String cursorProdName = data.getString(data.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_PRODUCT_NAME));
             int cursorPrice = data.getInt(data.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_PRODUCT_UNIT_PRICE));
@@ -588,7 +576,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             String cursorSupplierName = data.getString(data.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_PRODUCT_SUPPLIER_NAME));
             String cursorSupplierPhone = data.getString(data.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_PRODUCT_SUPPLIER_PHONE));
             String cursorSupplierEmail =data.getString(data.getColumnIndexOrThrow(ProductContract.ProductEntry.COLUMN_NAME_PRODUCT_SUPPLIER_EMAIL));
-
 
             mProductName.setText(cursorProdName);
             mProductUnitPrice.setText(String.valueOf(cursorPrice)); ;
@@ -600,7 +587,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mProductImage.setImageURI(imageUriPath);
             imageURI=imageUriPath.toString();
 
-
         }
 
     }
@@ -609,6 +595,5 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
 
     }
-
 
 }
