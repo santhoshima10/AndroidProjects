@@ -54,7 +54,6 @@
                 android:text="10"
                 android:textSize="16sp" />
 
-
         </LinearLayout>
 
         <LinearLayout
@@ -79,14 +78,12 @@
                 android:text="10"
                 android:textSize="16sp" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/andika"
                 android:text=" lb"
                 android:textSize="16sp" />
-
 
         </LinearLayout>
 
@@ -100,9 +97,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-
     </LinearLayout>
-
 
     <ImageButton
         android:id="@+id/product_sale_btn_id"

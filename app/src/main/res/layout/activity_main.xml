@@ -9,9 +9,7 @@
     <ListView
         android:id="@+id/list_view_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
+        android:layout_height="match_parent"></ListView>
 
     <RelativeLayout
         android:id="@+id/empty_view_id"
@@ -37,6 +35,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/andika" />
+
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -51,6 +50,5 @@
         android:clickable="true"
         android:src="@drawable/add_product"
         app:backgroundTint="@color/colorPrimary" />
-
 
 </RelativeLayout>

@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".EditorActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +24,6 @@
             app:fontFamily="@font/andika" />
 
         <EditText
-
             android:id="@+id/item_name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,14 +34,13 @@
             android:fontFamily="@font/andika"
             android:hint="Enter Product Name"
             android:inputType="text" />
-    </LinearLayout>
 
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,7 +52,6 @@
             android:text="Product Price"
             android:textStyle="bold" />
 
-
         <EditText
             android:id="@+id/unit_item_price_id"
             android:layout_width="match_parent"
@@ -65,7 +61,8 @@
             android:layout_marginRight="8dp"
             android:fontFamily="@font/andika"
             android:hint="Enter Unit Price Per LB"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="6" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,14 +74,12 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,7 +88,6 @@
             android:fontFamily="@font/andika"
             android:text="Quantity"
             android:textStyle="bold" />
-
 
         <Button
             android:id="@+id/increment_qty_btn_id"
@@ -108,6 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:inputType="number"
+            android:maxLength="4"
             android:text="0"
             android:textSize="16sp" />
 
@@ -128,7 +123,6 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -145,7 +139,6 @@
             android:text="Supplier Name"
             android:textStyle="bold" />
 
-
         <EditText
             android:id="@+id/supplier_name_id"
             android:layout_width="match_parent"
@@ -155,6 +148,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/andika"
             android:hint="Enter Supplier Name" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -173,7 +167,6 @@
             android:text="Supplier Phone"
             android:textStyle="bold" />
 
-
         <EditText
             android:id="@+id/supplier_phone_id"
             android:layout_width="match_parent"
@@ -184,15 +177,14 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/andika"
             android:hint="Enter Supplier Phone"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:maxLength="14" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -231,7 +223,6 @@
         android:text="Upload Product Image"
         android:textSize="16sp" />
 
-
     <ImageView
         android:id="@+id/item_image_id"
         android:layout_width="100dp"
@@ -239,6 +230,5 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp" />
-
 
 </LinearLayout>

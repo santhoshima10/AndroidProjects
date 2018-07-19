@@ -17,15 +17,16 @@ public class ProductProvider extends ContentProvider {
     public static final int PRODUCT_ID = 101;
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
     static {
 
-      uriMatcher.addURI(ProductContract.ProductEntry.CONTENT_AUTHORITY,"products", 100);
-      uriMatcher.addURI(ProductContract.ProductEntry.CONTENT_AUTHORITY,"products/#", 101);
+        uriMatcher.addURI(ProductContract.ProductEntry.CONTENT_AUTHORITY, "products", 100);
+        uriMatcher.addURI(ProductContract.ProductEntry.CONTENT_AUTHORITY, "products/#", 101);
 
     }
 
-
     private SQLiteOpenHelper mProductDBHelper;
+
     @Override
     public boolean onCreate() {
 
@@ -39,21 +40,21 @@ public class ProductProvider extends ContentProvider {
         SQLiteDatabase database = mProductDBHelper.getReadableDatabase();
         Cursor cursor;
 
-        switch (uriMatcher.match(uri)){
+        switch (uriMatcher.match(uri)) {
             case PRODUCT:
-                 cursor = database.query(ProductContract.ProductEntry.TABLE_NAME,projection,null,null,null,null,null);
-                 cursor.setNotificationUri(getContext().getContentResolver(),uri);
-                 return cursor;
+                cursor = database.query(ProductContract.ProductEntry.TABLE_NAME, projection, null, null, null, null, null);
+                cursor.setNotificationUri(getContext().getContentResolver(), uri);
+                return cursor;
 
             case PRODUCT_ID:
 
-                 cursor = database.query(ProductContract.ProductEntry.TABLE_NAME,projection,selection,selectionArgs,null,null,null);
-                 cursor.setNotificationUri(getContext().getContentResolver(),uri);
+                cursor = database.query(ProductContract.ProductEntry.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+                cursor.setNotificationUri(getContext().getContentResolver(), uri);
                 return cursor;
 
 
             default:
-                throw new IllegalArgumentException("Invalid Query URI"+uri);
+                throw new IllegalArgumentException("Invalid Query URI" + uri);
 
         }
 
@@ -64,33 +65,31 @@ public class ProductProvider extends ContentProvider {
     @Override
     public String getType(@NonNull Uri uri) {
 
-        switch (uriMatcher.match(uri)){
+        switch (uriMatcher.match(uri)) {
             case PRODUCT:
                 return ProductContract.ProductEntry.CONTENT_LIST_TYPE;
             case PRODUCT_ID:
                 return ProductContract.ProductEntry.CONTENT_ITEM_TYPE;
-             default:
-                 throw new IllegalArgumentException("Unable to process the Uri"+uri);
+            default:
+                throw new IllegalArgumentException("Unable to process the Uri" + uri);
         }
     }
 
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        switch (uriMatcher.match(uri)){
+        switch (uriMatcher.match(uri)) {
             case PRODUCT:
                 SQLiteDatabase database = mProductDBHelper.getWritableDatabase();
-                long id = database.insert(ProductContract.ProductEntry.TABLE_NAME,null,values);
-                if(id != -1){
-                    getContext().getContentResolver().notifyChange(uri,null);
-                    return Uri.withAppendedPath(ProductContract.ProductEntry.CONTENT_URI,String.valueOf(id));
-                }
-                else
-                {
+                long id = database.insert(ProductContract.ProductEntry.TABLE_NAME, null, values);
+                if (id != -1) {
+                    getContext().getContentResolver().notifyChange(uri, null);
+                    return Uri.withAppendedPath(ProductContract.ProductEntry.CONTENT_URI, String.valueOf(id));
+                } else {
                     return null;
                 }
-             default:
-                 throw new IllegalArgumentException("Unable to process URI"+uri);
+            default:
+                throw new IllegalArgumentException("Unable to process URI" + uri);
 
         }
 
@@ -102,12 +101,12 @@ public class ProductProvider extends ContentProvider {
         SQLiteDatabase database = mProductDBHelper.getWritableDatabase();
         int count;
 
-        switch (uriMatcher.match(uri)){
+        switch (uriMatcher.match(uri)) {
             case PRODUCT:
 
-                count = database.delete(ProductContract.ProductEntry.TABLE_NAME,null,null);
-                if(count > 0){
-                    getContext().getContentResolver().notifyChange(uri,null);
+                count = database.delete(ProductContract.ProductEntry.TABLE_NAME, null, null);
+                if (count > 0) {
+                    getContext().getContentResolver().notifyChange(uri, null);
                 }
                 return count;
 
@@ -115,16 +114,15 @@ public class ProductProvider extends ContentProvider {
             case PRODUCT_ID:
 
 
-                count = database.delete(ProductContract.ProductEntry.TABLE_NAME,selection,selectionArgs);
-                if(count > 0){
-                    getContext().getContentResolver().notifyChange(uri,null);
+                count = database.delete(ProductContract.ProductEntry.TABLE_NAME, selection, selectionArgs);
+                if (count > 0) {
+                    getContext().getContentResolver().notifyChange(uri, null);
                 }
                 return count;
 
-             default:
-                 throw new IllegalArgumentException("Unable to process the Delete URI"+uri.toString());
+            default:
+                throw new IllegalArgumentException("Unable to process the Delete URI" + uri.toString());
         }
-
 
 
     }
@@ -132,28 +130,28 @@ public class ProductProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
 
-         SQLiteDatabase database = mProductDBHelper.getWritableDatabase();
-         int count;
+        SQLiteDatabase database = mProductDBHelper.getWritableDatabase();
+        int count;
 
-        switch(uriMatcher.match(uri)){
+        switch (uriMatcher.match(uri)) {
             case PRODUCT:
-                count = database.update(ProductContract.ProductEntry.TABLE_NAME,values,null,null);
-                if(count > 0){
-                    getContext().getContentResolver().notifyChange(uri,null);
+                count = database.update(ProductContract.ProductEntry.TABLE_NAME, values, null, null);
+                if (count > 0) {
+                    getContext().getContentResolver().notifyChange(uri, null);
                 }
                 return count;
 
             case PRODUCT_ID:
 
-                count = database.update(ProductContract.ProductEntry.TABLE_NAME,values,selection,selectionArgs);
-                if(count > 0){
-                    getContext().getContentResolver().notifyChange(uri,null);
+                count = database.update(ProductContract.ProductEntry.TABLE_NAME, values, selection, selectionArgs);
+                if (count > 0) {
+                    getContext().getContentResolver().notifyChange(uri, null);
                 }
                 return count;
 
 
-             default:
-                throw  new IllegalArgumentException("Unable to process Update URI"+uri.toString());
+            default:
+                throw new IllegalArgumentException("Unable to process Update URI" + uri.toString());
 
         }
 
