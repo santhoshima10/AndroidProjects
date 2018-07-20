@@ -102,7 +102,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mProductAddImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                selectImage();
 
             }
         });
@@ -179,6 +179,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private void mIncrementQty() {
 
+        item_qty = Integer.parseInt(mProductQuantity.getText().toString());
         item_qty = item_qty + 1;
         mProductQuantity.setText(Integer.toString(item_qty));
 
@@ -186,6 +187,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private void mDecrementQty() {
 
+        item_qty = Integer.parseInt(mProductQuantity.getText().toString());
         if (item_qty > 0) {
             item_qty = item_qty - 1;
         }
